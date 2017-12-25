@@ -56,6 +56,8 @@ void MainWindow::init_slot()
     connect(ui->pushButton_B, SIGNAL(released()),this, SLOT(pushbutton_B_released()));
     connect(ui->pushButton_C, SIGNAL(released()),this, SLOT(pushbutton_C_released()));
     connect(ui->pushButton_D, SIGNAL(released()),this, SLOT(pushbutton_D_released()));
+
+    connect(&timer, SIGNAL(timeout()),this, SLOT(play()));
 }
 
 void MainWindow::setApplicationPath(QString path)
@@ -83,6 +85,68 @@ void MainWindow::show_list()
         QListWidgetItem *item = new QListWidgetItem;
         item->setText(list[i].fileName());
         ui->listWidget->addItem(item);
+    }
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    switch(event->key())
+    {
+    case Qt::Key_W:
+        pushbutton_up_pressed();
+        break;
+    case Qt::Key_S:
+        pushbutton_down_pressed();
+        break;
+    case Qt::Key_A:
+        pushbutton_left_pressed();
+        break;
+    case Qt::Key_D:
+        pushbutton_right_pressed();
+        break;
+    case Qt::Key_U:
+        pushbutton_A_pressed();
+        break;
+    case Qt::Key_I:
+        pushbutton_B_pressed();
+        break;
+    case Qt::Key_J:
+        pushbutton_C_pressed();
+        break;
+    case Qt::Key_K:
+        pushbutton_D_pressed();
+        break;
+    }
+}
+
+void MainWindow::keyReleaseEvent(QKeyEvent *event)
+{
+    switch(event->key())
+    {
+    case Qt::Key_W:
+        pushbutton_up_released();
+        break;
+    case Qt::Key_S:
+        pushbutton_down_released();
+        break;
+    case Qt::Key_A:
+        pushbutton_left_released();
+        break;
+    case Qt::Key_D:
+        pushbutton_right_released();
+        break;
+    case Qt::Key_U:
+        pushbutton_A_released();
+        break;
+    case Qt::Key_I:
+        pushbutton_B_released();
+        break;
+    case Qt::Key_J:
+        pushbutton_C_released();
+        break;
+    case Qt::Key_K:
+        pushbutton_D_released();
+        break;
     }
 }
 
@@ -137,6 +201,7 @@ void MainWindow::pushbutton_A_pressed()
                 load_file(file.toStdString().c_str());
                 ui->stackedWidget->setCurrentIndex(1);
                 fce_init();
+                timer.start(5);
             }
         }
     }
@@ -180,6 +245,7 @@ void MainWindow::pushbutton_right_released()
 
 void MainWindow::pushbutton_A_released()
 {
+
     gwidget->removeFlag(A);
 }
 
@@ -196,4 +262,12 @@ void MainWindow::pushbutton_C_released()
 void MainWindow::pushbutton_D_released()
 {
     gwidget->removeFlag(D);
+}
+
+void MainWindow::play()
+{
+    timer.stop();
+    fce_run();
+    timer.start(1);
+
 }

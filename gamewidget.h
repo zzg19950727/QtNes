@@ -1,6 +1,7 @@
 #ifndef GAMEWIDGET_H
 #define GAMEWIDGET_H
 #include <QOpenGLWidget>
+#include <QImage>
 #include <Qpoint>
 #include "fce.h"
 #include "nes.h"
@@ -96,12 +97,9 @@ protected:
     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
 
 private:
-    int background_color;
 
-    QPoint map[64][SCREEN_WIDTH*SCREEN_HEIGHT];
-
-    uint32_t map_size[64] = { 0 };
-
+    uint32_t data[SCREEN_WIDTH*SCREEN_HEIGHT];
+    QImage *image;
     int key_map;
 };
 

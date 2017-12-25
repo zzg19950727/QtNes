@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include <QFileInfo>
+#include <QKeyEvent>
 #include <QList>
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -27,6 +29,10 @@ public:
     void changeDir(QString path);
 
     void show_list();
+
+    void keyPressEvent(QKeyEvent* event);
+
+    void keyReleaseEvent(QKeyEvent* event);
 
 private slots:
     void pushbutton_up_pressed();
@@ -61,12 +67,16 @@ private slots:
 
     void pushbutton_D_released();
 
+    void play();
+
 private:
     Ui::MainWindow *ui;
 
     QList<QFileInfo> list;
 
     int key_map;
+
+    QTimer timer;
 };
 
 #endif // MAINWINDOW_H

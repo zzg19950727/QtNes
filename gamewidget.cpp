@@ -1,21 +1,26 @@
 #include "gamewidget.h"
 #include <QPainter>
+#include <QImage>
 
 gamewidget::gamewidget(QWidget *parent)
 : QOpenGLWidget(parent)
 {
     key_map = 0;
+    image = new QImage((uchar*)data, SCREEN_WIDTH, SCREEN_HEIGHT, QImage::Format_ARGB32);
 }
 
 void gamewidget::clearBackground(int c)
 {
-    background_color = c;
+    pal rgb = pale[c];
+    image->fill(QColor(rgb.r,rgb.g,rgb.b,255));
 }
 
 void gamewidget::addPoint(int x, int y, int c)
 {
-    map[c][map_size[c]].setX( x );
-    map[c][map_size[c]++].setY( y );
+    if(x<0||x>=SCREEN_HEIGHT || y<0 || y>=SCREEN_WIDTH)
+        return;
+    pal rgb = pale[c];
+    image->setPixelColor(x,y, QColor(rgb.r,rgb.g,rgb.b));
 }
 
 void gamewidget::display()
@@ -28,15 +33,7 @@ void gamewidget::paintEvent(QPaintEvent *event)
     QPainter painter;
     painter.begin(this);
 
-    pal color = pale[background_color];
-    painter.fillRect(this->rect(), QColor(color.r, color.g, color.b));
-
-    for(int i=0; i<0; ++i)
-    {
-        pal color = pale[i];
-        painter.setPen(QColor(color.r, color.g, color.b));
-        painter.drawPoints(map[i], map_size[i]);
-    }
+    painter.drawImage(0,0,*image);
 
     painter.end();
 }

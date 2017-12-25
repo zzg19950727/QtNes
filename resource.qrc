@@ -8,5 +8,6 @@
         <file>res/B.png</file>
         <file>res/C.png</file>
         <file>res/D.png</file>
+        <file>res/side1.png</file>
     </qresource>
 </RCC>

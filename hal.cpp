@@ -36,7 +36,6 @@ To port this project, replace the following functions by your own:
       7 - LEFT
       8 - RIGHT
 */
-#include <windows.h>
 #include "gamewidget.h"
 #include "hal.h"
 
@@ -95,15 +94,7 @@ int nes_key_state(int b)
      }
 }
 
-DWORD WINAPI ThreadFun(LPVOID pM)
-{
-    while (true)
-    {
-        run_once();
-    }
-}
-
 void fce_run()
 {
-    HANDLE handle =CreateThread(NULL,0,ThreadFun,NULL,0,NULL);
+    run_once();
 }
