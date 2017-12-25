@@ -12,7 +12,6 @@ void cpu_address_immediate()
 {
     op_value = memory_readb(cpu.PC);
     cpu.PC++;
-
 }
 
 void cpu_address_zero_page()

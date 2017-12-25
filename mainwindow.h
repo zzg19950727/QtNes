@@ -77,6 +77,8 @@ private:
     int key_map;
 
     QTimer timer;
+
+    bool stop;
 };
 
 #endif // MAINWINDOW_H

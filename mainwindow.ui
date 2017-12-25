@@ -6,30 +6,39 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>576</width>
-    <height>260</height>
+    <width>512</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: qlineargradient(spread:reflect, x1:0, y1:1, x2:0, y2:0, stop:0.157303 rgba(13, 13, 13, 255), stop:1 rgba(255, 255, 255, 255));</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_7">
+   <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,2,1">
     <property name="spacing">
      <number>0</number>
     </property>
     <item>
      <widget class="QFrame" name="frame_control">
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
        <item>
         <spacer name="verticalSpacer">
          <property name="orientation">
@@ -60,16 +69,20 @@
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_up">
-           <property name="maximumSize">
+           <property name="minimumSize">
             <size>
              <width>40</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">height:30;
-width:40;
-border-image: url(:/res/up.png);</string>
+            <string notr="true">border-image: url(:/res/up.png);</string>
            </property>
            <property name="text">
             <string/>
@@ -98,16 +111,20 @@ border-image: url(:/res/up.png);</string>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
           <widget class="QPushButton" name="pushButton_left">
-           <property name="maximumSize">
+           <property name="minimumSize">
             <size>
              <width>40</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">height:30;
-width:40;
-border-image: url(:/res/left.png);</string>
+            <string notr="true">border-image: url(:/res/left.png);</string>
            </property>
            <property name="text">
             <string/>
@@ -132,16 +149,20 @@ border-image: url(:/res/left.png);</string>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_right">
-           <property name="maximumSize">
+           <property name="minimumSize">
             <size>
              <width>40</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">height:30;
-width:40;
-border-image: url(:/res/right.png);</string>
+            <string notr="true">border-image: url(:/res/right.png);</string>
            </property>
            <property name="text">
             <string/>
@@ -170,16 +191,20 @@ border-image: url(:/res/right.png);</string>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_down">
-           <property name="maximumSize">
+           <property name="minimumSize">
             <size>
              <width>40</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">height:30;
-width:40;
-border-image: url(:/res/down.png);</string>
+            <string notr="true">border-image: url(:/res/down.png);</string>
            </property>
            <property name="text">
             <string/>
@@ -210,7 +235,7 @@ border-image: url(:/res/down.png);</string>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -243,7 +268,7 @@ border-image: url(:/res/down.png);</string>
         <item>
          <widget class="QFrame" name="frame_game">
           <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
+           <enum>QFrame::NoFrame</enum>
           </property>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
@@ -257,12 +282,21 @@ border-image: url(:/res/down.png);</string>
     <item>
      <widget class="QFrame" name="frame_fight">
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
        <item>
         <spacer name="verticalSpacer_2">
          <property name="orientation">
@@ -293,16 +327,20 @@ border-image: url(:/res/down.png);</string>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_B">
-           <property name="maximumSize">
+           <property name="minimumSize">
             <size>
              <width>40</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">height:30;
-width:40;
-border-image: url(:/res/B.png);</string>
+            <string notr="true">border-image: url(:/res/B.png);</string>
            </property>
            <property name="text">
             <string/>
@@ -328,16 +366,20 @@ border-image: url(:/res/B.png);</string>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QPushButton" name="pushButton_A">
-           <property name="maximumSize">
+           <property name="minimumSize">
             <size>
              <width>40</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">height:30;
-border-image: url(:/res/A.png);
-width:40;</string>
+            <string notr="true">border-image: url(:/res/A.png);</string>
            </property>
            <property name="text">
             <string/>
@@ -362,16 +404,20 @@ width:40;</string>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_C">
-           <property name="maximumSize">
+           <property name="minimumSize">
             <size>
              <width>40</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">height:30;
-width:40;
-border-image: url(:/res/C.png);</string>
+            <string notr="true">border-image: url(:/res/C.png);</string>
            </property>
            <property name="text">
             <string/>
@@ -397,16 +443,20 @@ border-image: url(:/res/C.png);</string>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_D">
-           <property name="maximumSize">
+           <property name="minimumSize">
             <size>
              <width>40</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">height:30;
-width:40;
-border-image: url(:/res/D.png);</string>
+            <string notr="true">border-image: url(:/res/D.png);</string>
            </property>
            <property name="text">
             <string/>

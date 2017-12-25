@@ -2,7 +2,8 @@
 #include "ui_mainwindow.h"
 #include "gamewidget.h"
 #include <QListWidgetItem>
-#include <QHBoxLayout>
+#include <QSpacerItem>
+#include <QVBoxLayout>
 #include <QDir>
 #include <QDebug>
 
@@ -14,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     key_map = 0;
+    stop = true;
     init_UI();
     init_slot();
 }
@@ -26,12 +28,22 @@ MainWindow::~MainWindow()
 void MainWindow::init_UI()
 {
     this->setWindowFlags(Qt::FramelessWindowHint);
+    QPalette palette;
+    palette.setBrush(QPalette::Background,QBrush(Qt::gray));
+    //this->setPalette(palette);
+    //this->setAutoFillBackground(true);
+    //this->setAttribute(Qt::WA_TranslucentBackground, true);
+    //this->setAttribute(Qt::WA_NoSystemBackground, false);
     ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff); //隐藏水平方向和垂直方向的滚动条
     ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     gwidget = new gamewidget(ui->frame_game);
-    QHBoxLayout* layout = new QHBoxLayout;
+    QVBoxLayout* layout = new QVBoxLayout;
+
+    layout->addSpacerItem(new QSpacerItem(10,10));
     layout->addWidget(gwidget);
+    layout->addSpacerItem(new QSpacerItem(10,10));
+
     ui->frame_game->setLayout(layout);
 
     ui->stackedWidget->setCurrentIndex(0);
@@ -184,6 +196,13 @@ void MainWindow::pushbutton_right_pressed()
 
 void MainWindow::pushbutton_A_pressed()
 {
+    if(ui->stackedWidget->currentIndex()==1)
+    {
+        stop = true;
+        ui->stackedWidget->setCurrentIndex(0);
+        return;
+    }
+
     int row = ui->listWidget->currentRow();
 
     if(row>=0 && row<list.size())
@@ -201,11 +220,13 @@ void MainWindow::pushbutton_A_pressed()
                 load_file(file.toStdString().c_str());
                 ui->stackedWidget->setCurrentIndex(1);
                 fce_init();
+                stop = false;
                 timer.start(5);
             }
         }
     }
     gwidget->setFlag(A);
+
 }
 
 void MainWindow::pushbutton_B_pressed()
@@ -268,6 +289,6 @@ void MainWindow::play()
 {
     timer.stop();
     fce_run();
-    timer.start(1);
-
+    if(!stop)
+        timer.start(1);
 }
